@@ -30,12 +30,12 @@ namespace NavegadorD
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.buttonIr = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.navegarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.haciaAtrasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.haciaDelanteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buttonIr = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -46,9 +46,40 @@ namespace NavegadorD
             this.navegarToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(910, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(860, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // navegarToolStripMenuItem
+            // 
+            this.navegarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.inicioToolStripMenuItem,
+            this.haciaAtrasToolStripMenuItem,
+            this.haciaDelanteToolStripMenuItem});
+            this.navegarToolStripMenuItem.Name = "navegarToolStripMenuItem";
+            this.navegarToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
+            this.navegarToolStripMenuItem.Text = "Navegar";
+            // 
+            // inicioToolStripMenuItem
+            // 
+            this.inicioToolStripMenuItem.Name = "inicioToolStripMenuItem";
+            this.inicioToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.inicioToolStripMenuItem.Text = "Inicio";
+            this.inicioToolStripMenuItem.Click += new System.EventHandler(this.inicioToolStripMenuItem_Click);
+            // 
+            // haciaAtrasToolStripMenuItem
+            // 
+            this.haciaAtrasToolStripMenuItem.Name = "haciaAtrasToolStripMenuItem";
+            this.haciaAtrasToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.haciaAtrasToolStripMenuItem.Text = "Hacia atras";
+            this.haciaAtrasToolStripMenuItem.Click += new System.EventHandler(this.haciaAtrasToolStripMenuItem_Click);
+            // 
+            // haciaDelanteToolStripMenuItem
+            // 
+            this.haciaDelanteToolStripMenuItem.Name = "haciaDelanteToolStripMenuItem";
+            this.haciaDelanteToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.haciaDelanteToolStripMenuItem.Text = "Hacia delante";
+            this.haciaDelanteToolStripMenuItem.Click += new System.EventHandler(this.haciaDelanteToolStripMenuItem_Click);
             // 
             // buttonIr
             // 
@@ -71,37 +102,6 @@ namespace NavegadorD
             this.comboBox1.Size = new System.Drawing.Size(737, 21);
             this.comboBox1.TabIndex = 0;
             // 
-            // navegarToolStripMenuItem
-            // 
-            this.navegarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.inicioToolStripMenuItem,
-            this.haciaAtrasToolStripMenuItem,
-            this.haciaDelanteToolStripMenuItem});
-            this.navegarToolStripMenuItem.Name = "navegarToolStripMenuItem";
-            this.navegarToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
-            this.navegarToolStripMenuItem.Text = "Navegar";
-            // 
-            // inicioToolStripMenuItem
-            // 
-            this.inicioToolStripMenuItem.Name = "inicioToolStripMenuItem";
-            this.inicioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.inicioToolStripMenuItem.Text = "Inicio";
-            this.inicioToolStripMenuItem.Click += new System.EventHandler(this.inicioToolStripMenuItem_Click);
-            // 
-            // haciaAtrasToolStripMenuItem
-            // 
-            this.haciaAtrasToolStripMenuItem.Name = "haciaAtrasToolStripMenuItem";
-            this.haciaAtrasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.haciaAtrasToolStripMenuItem.Text = "Hacia atras";
-            this.haciaAtrasToolStripMenuItem.Click += new System.EventHandler(this.haciaAtrasToolStripMenuItem_Click);
-            // 
-            // haciaDelanteToolStripMenuItem
-            // 
-            this.haciaDelanteToolStripMenuItem.Name = "haciaDelanteToolStripMenuItem";
-            this.haciaDelanteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.haciaDelanteToolStripMenuItem.Text = "Hacia delante";
-            this.haciaDelanteToolStripMenuItem.Click += new System.EventHandler(this.haciaDelanteToolStripMenuItem_Click);
-            // 
             // webBrowser1
             // 
             this.webBrowser1.Location = new System.Drawing.Point(12, 92);
@@ -114,7 +114,7 @@ namespace NavegadorD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(910, 554);
+            this.ClientSize = new System.Drawing.Size(860, 563);
             this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.buttonIr);
