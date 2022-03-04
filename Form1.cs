@@ -11,6 +11,7 @@ using System.Windows.Forms;
 
 namespace NavegadorD
 {
+    List<URL> listaHistorial = new List<URL>(); 
     public partial class Form1 : Form
     {
         public Form1()
@@ -60,6 +61,8 @@ namespace NavegadorD
                 guardarHistorial("historial.txt", uri);
             }
 
+            DateTime fechaActual = DateTime.Now;
+
             //comboBox1.Items.Clear();
             //leerHistorial();
 
@@ -83,7 +86,7 @@ namespace NavegadorD
         private void Form1_Load(object sender, EventArgs e)
         {
             //comboBox1.SelectedIndex = 0;
-            //webBrowser1.GoHome();
+            webBrowser1.GoHome();
             //lectura del historial al iniciar el formulario
             leerHistorial("historial.txt");
         }
