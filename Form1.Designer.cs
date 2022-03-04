@@ -37,13 +37,17 @@ namespace NavegadorD
             this.buttonIr = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.historialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.masVisitadaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.masRecientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.navegarToolStripMenuItem});
+            this.navegarToolStripMenuItem,
+            this.historialToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(860, 24);
@@ -63,21 +67,21 @@ namespace NavegadorD
             // inicioToolStripMenuItem
             // 
             this.inicioToolStripMenuItem.Name = "inicioToolStripMenuItem";
-            this.inicioToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.inicioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.inicioToolStripMenuItem.Text = "Inicio";
             this.inicioToolStripMenuItem.Click += new System.EventHandler(this.inicioToolStripMenuItem_Click);
             // 
             // haciaAtrasToolStripMenuItem
             // 
             this.haciaAtrasToolStripMenuItem.Name = "haciaAtrasToolStripMenuItem";
-            this.haciaAtrasToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.haciaAtrasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.haciaAtrasToolStripMenuItem.Text = "Hacia atras";
             this.haciaAtrasToolStripMenuItem.Click += new System.EventHandler(this.haciaAtrasToolStripMenuItem_Click);
             // 
             // haciaDelanteToolStripMenuItem
             // 
             this.haciaDelanteToolStripMenuItem.Name = "haciaDelanteToolStripMenuItem";
-            this.haciaDelanteToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.haciaDelanteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.haciaDelanteToolStripMenuItem.Text = "Hacia delante";
             this.haciaDelanteToolStripMenuItem.Click += new System.EventHandler(this.haciaDelanteToolStripMenuItem_Click);
             // 
@@ -110,6 +114,27 @@ namespace NavegadorD
             this.webBrowser1.Size = new System.Drawing.Size(818, 441);
             this.webBrowser1.TabIndex = 1;
             // 
+            // historialToolStripMenuItem
+            // 
+            this.historialToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.masVisitadaToolStripMenuItem,
+            this.masRecientesToolStripMenuItem});
+            this.historialToolStripMenuItem.Name = "historialToolStripMenuItem";
+            this.historialToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
+            this.historialToolStripMenuItem.Text = "Historial";
+            // 
+            // masVisitadaToolStripMenuItem
+            // 
+            this.masVisitadaToolStripMenuItem.Name = "masVisitadaToolStripMenuItem";
+            this.masVisitadaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.masVisitadaToolStripMenuItem.Text = "Mas Visitadas";
+            // 
+            // masRecientesToolStripMenuItem
+            // 
+            this.masRecientesToolStripMenuItem.Name = "masRecientesToolStripMenuItem";
+            this.masRecientesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.masRecientesToolStripMenuItem.Text = "Mas Recientes";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -140,6 +165,9 @@ namespace NavegadorD
         private System.Windows.Forms.Button buttonIr;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.WebBrowser webBrowser1;
+        private System.Windows.Forms.ToolStripMenuItem historialToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem masVisitadaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem masRecientesToolStripMenuItem;
     }
 }
 

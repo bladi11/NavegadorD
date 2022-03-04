@@ -23,7 +23,7 @@ namespace NavegadorD
             //if(comboBox1.SelectedItem != null)
             //   webBrowser1.Navigate(new Uri(comboBox1.SelectedItem.ToString()));
 
-            if (comboBox1.Text.ToString().Contains("http://www.") && comboBox1.Text.ToString().Contains(".")) 
+           /* if (comboBox1.Text.ToString().Contains("http://www.") && comboBox1.Text.ToString().Contains(".")) 
                 webBrowser1.Navigate(new Uri(comboBox1.SelectedItem.ToString()));
 
             else if (comboBox1.Text.ToString().Contains(".")==false)
@@ -33,10 +33,35 @@ namespace NavegadorD
                 webBrowser1.Navigate(new Uri("https://"+comboBox1.Text.ToString()));
 
             if (comboBox1.Items.Contains(comboBox1.Text) == false)
-                guardarHistorial(comboBox1.Text.ToString());
+                guardarHistorial(comboBox1.Text.ToString());*/
 
-            comboBox1.Items.Clear();
-            leerHistorial();
+            string uri = "";
+            if (comboBox1.Text != null)
+                uri = comboBox1.Text;
+            else if (comboBox1.SelectedItem != null)
+                uri = comboBox1.SelectedItem.ToString();
+            if (!uri.Contains("."))
+                uri = "https://www.google.com/search?q=" + uri;
+            if (!uri.Contains("https://"))
+                uri = "https://" + uri;
+
+            webBrowser1.Navigate(new Uri(uri));
+
+            int yaEsta = 0;
+            for (int i = 0; i < comboBox1.Items.Count; i++)
+            {
+                if (comboBox1.Items[i].ToString() == uri)
+                    yaEsta++;
+            }
+
+            if (yaEsta == 0)
+            {
+                comboBox1.Items.Add(uri);
+                guardarHistorial("historial.txt", uri);
+            }
+
+            //comboBox1.Items.Clear();
+            //leerHistorial();
 
         }
 
@@ -58,15 +83,15 @@ namespace NavegadorD
         private void Form1_Load(object sender, EventArgs e)
         {
             //comboBox1.SelectedIndex = 0;
-            webBrowser1.GoHome();
+            //webBrowser1.GoHome();
             //lectura del historial al iniciar el formulario
-            leerHistorial();
+            leerHistorial("historial.txt");
         }
 
-        private void guardarHistorial(string texto)
+        private void guardarHistorial(string nombreArchivo, string texto)
         {
             //guardar o crear/leer historial
-            FileStream stream = new FileStream("historial.txt", FileMode.Append, FileAccess.Write);
+            FileStream stream = new FileStream(nombreArchivo, FileMode.Append, FileAccess.Write);
             StreamWriter escribir = new StreamWriter(stream);
 
             escribir.WriteLine(texto);
@@ -74,9 +99,9 @@ namespace NavegadorD
             stream.Close();
         }
 
-        private void leerHistorial() 
+        private void leerHistorial(string nombreArchivo) 
         {
-            string nombreArchivo = "historial.txt";
+            //string nombreArchivo = "historial.txt";
             //lectura del historial
             FileStream stream = new FileStream(nombreArchivo, FileMode.Open, FileAccess.Read);
             StreamReader reader = new StreamReader(stream);
