@@ -37,10 +37,10 @@ namespace NavegadorD
             this.historialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.masVisitadaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.masRecientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonIr = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
-            this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -101,12 +101,21 @@ namespace NavegadorD
             this.masVisitadaToolStripMenuItem.Name = "masVisitadaToolStripMenuItem";
             this.masVisitadaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.masVisitadaToolStripMenuItem.Text = "Mas Visitadas";
+            this.masVisitadaToolStripMenuItem.Click += new System.EventHandler(this.masVisitadaToolStripMenuItem_Click);
             // 
             // masRecientesToolStripMenuItem
             // 
             this.masRecientesToolStripMenuItem.Name = "masRecientesToolStripMenuItem";
             this.masRecientesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.masRecientesToolStripMenuItem.Text = "Mas Recientes";
+            this.masRecientesToolStripMenuItem.Click += new System.EventHandler(this.masRecientesToolStripMenuItem_Click);
+            // 
+            // eliminarToolStripMenuItem
+            // 
+            this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
+            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.eliminarToolStripMenuItem.Text = "Eliminar";
+            this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
             // 
             // buttonIr
             // 
@@ -136,12 +145,6 @@ namespace NavegadorD
             this.webBrowser1.Name = "webBrowser1";
             this.webBrowser1.Size = new System.Drawing.Size(818, 441);
             this.webBrowser1.TabIndex = 1;
-            // 
-            // eliminarToolStripMenuItem
-            // 
-            this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
-            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.eliminarToolStripMenuItem.Text = "Eliminar";
             // 
             // Form1
             // 

@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace NavegadorD
-{
-    List<URL> listaHistorial = new List<URL>(); 
+{ 
     public partial class Form1 : Form
     {
+        List<URL> listaHistorial = new List<URL>();
         public Form1()
         {
             InitializeComponent();
@@ -42,7 +42,7 @@ namespace NavegadorD
             else if (comboBox1.SelectedItem != null)
                 uri = comboBox1.SelectedItem.ToString();
             if (!uri.Contains("."))
-                uri = "https://www.google.com/search?q=" + uri;
+                uri = "https://www.bing.com/search?q=" + uri;
             if (!uri.Contains("https://"))
                 uri = "https://" + uri;
 
@@ -58,13 +58,25 @@ namespace NavegadorD
             if (yaEsta == 0)
             {
                 comboBox1.Items.Add(uri);
-                guardarHistorial("historial.txt", uri);
+                guardarHistorial();
             }
 
             DateTime fechaActual = DateTime.Now;
 
-            //comboBox1.Items.Clear();
-            //leerHistorial();
+            if (comboBox1.Items.Contains(comboBox1.Text) == false)
+            {
+                guardarLista(comboBox1.Text, 1, fechaActual);
+            }
+            else
+            {
+                URL uri2 = listaHistorial.Find(x => x.Direcccion == comboBox1.Text);
+                uri2.NoVisitadas = uri2.NoVisitadas + 1;
+                uri2.UltimoAcceso = fechaActual;
+                guardarHistorial();
+            }
+
+            comboBox1.Items.Clear();
+            leerLista();
 
         }
 
@@ -89,17 +101,27 @@ namespace NavegadorD
             webBrowser1.GoHome();
             //lectura del historial al iniciar el formulario
             leerHistorial("historial.txt");
+            leerLista();
         }
 
-        private void guardarHistorial(string nombreArchivo, string texto)
+        private void guardarHistorial()
         {
             //guardar o crear/leer historial
+            string nombreArchivo = "historial.txt";
             FileStream stream = new FileStream(nombreArchivo, FileMode.Append, FileAccess.Write);
             StreamWriter escribir = new StreamWriter(stream);
 
-            escribir.WriteLine(texto);
+            foreach (var uri in listaHistorial)
+            {
+                escribir.WriteLine(uri.Direcccion);
+                escribir.WriteLine(uri.NoVisitadas);
+                escribir.WriteLine(uri.UltimoAcceso);
+
+
+            }
             escribir.Close();
             stream.Close();
+
         }
 
         private void leerHistorial(string nombreArchivo) 
@@ -111,10 +133,64 @@ namespace NavegadorD
 
             while (reader.Peek() >-1)
             {
-                string texto = reader.ReadLine();
-                comboBox1.Items.Add(texto);
+                //string texto = reader.ReadLine();
+                //comboBox1.Items.Add(texto);
+                URL datosUri = new URL();
+                datosUri.Direcccion = reader.ReadLine();
+                datosUri.NoVisitadas = Convert.ToInt16(reader.ReadLine());
+                datosUri.UltimoAcceso = Convert.ToDateTime(reader.ReadLine());
+                listaHistorial.Add(datosUri);
             }
             reader.Close();
+            stream.Close();
+        }
+
+        private void leerLista()
+        {
+            foreach (var uri in listaHistorial)
+            {
+                comboBox1.Items.Add(uri.Direcccion);
+            }
+        }
+
+        private void guardarLista(string direccion,int novisitadas, DateTime fecha)
+        {
+            URL url = new URL();
+            url.Direcccion = direccion;
+            url.NoVisitadas = novisitadas;
+            url.UltimoAcceso = fecha;
+            listaHistorial.Add(url);
+
+            guardarHistorial();
+        }
+
+        private void masVisitadaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            listaHistorial = listaHistorial.OrderByDescending(x => x.NoVisitadas).ToList();
+            comboBox1.Items.Clear();
+            leerLista();
+        }
+
+        private void masRecientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            listaHistorial = listaHistorial.OrderByDescending(x => x.UltimoAcceso).ToList();
+            comboBox1.Items.Clear();
+            leerLista();
+        }
+
+        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (comboBox1.Items.Contains(comboBox1.Text))
+            {
+                comboBox1.Items.Contains(comboBox1.Text);
+                listaHistorial.RemoveAll(x => x.Direcccion == comboBox1.Text);
+                File.Delete("historial.txt");
+                guardarHistorial();
+                comboBox1.Items.Clear();
+                leerLista();
+
+            }
+
         }
     }
 }
