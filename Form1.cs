@@ -62,7 +62,7 @@ namespace NavegadorD
             }
 
             DateTime fechaActual = DateTime.Now;
-
+            //verificar si ya esta en la lista la url
             if (comboBox1.Items.Contains(comboBox1.Text) == false)
             {
                 guardarLista(comboBox1.Text, 1, fechaActual);
@@ -110,7 +110,9 @@ namespace NavegadorD
             string nombreArchivo = "historial.txt";
             FileStream stream = new FileStream(nombreArchivo, FileMode.Append, FileAccess.Write);
             StreamWriter escribir = new StreamWriter(stream);
+            //hay que recorrer la lista para ir guardando cada elemento 
 
+            //desde la lista historial copiar a la variable uri
             foreach (var uri in listaHistorial)
             {
                 escribir.WriteLine(uri.Direcccion);
@@ -137,7 +139,7 @@ namespace NavegadorD
                 //comboBox1.Items.Add(texto);
                 URL datosUri = new URL();
                 datosUri.Direcccion = reader.ReadLine();
-                datosUri.NoVisitadas = Convert.ToInt16(reader.ReadLine());
+                datosUri.NoVisitadas = Convert.ToInt32(reader.ReadLine());
                 datosUri.UltimoAcceso = Convert.ToDateTime(reader.ReadLine());
                 listaHistorial.Add(datosUri);
             }
